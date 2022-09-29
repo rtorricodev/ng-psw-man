@@ -1,5 +1,7 @@
 import MainController from '../controllers/MainController';
 import { MainRouter } from './../routes/MainRouter';
+import PasswordCardController from '../controllers/PasswordCardController';
+import { PasswordCardRouter } from './../routes/PasswordCardRouter';
 import bodyParser from "body-parser";
 import express from "express";
 
@@ -20,7 +22,8 @@ export default class ExpressServer {
     }
 
     private defineRoutes(): void {
-        this.app.use('/', (new MainRouter(new MainController)).router)
+        this.app.use('/', (new MainRouter(new MainController)).router);
+        this.app.use('/password-cards', (new PasswordCardRouter(new PasswordCardController)).router);
     }
 
 }
