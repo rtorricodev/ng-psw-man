@@ -9,10 +9,6 @@ export default class ExpressServer {
 
     app: express.Application = express();
 
-    constructor() {
-
-    }
-
     initialize(port: number): void {
         this.app.use(bodyParser.json({limit: '50mb'}));
         this.defineRoutes();
@@ -25,5 +21,4 @@ export default class ExpressServer {
         this.app.use('/', (new MainRouter(new MainController)).router);
         this.app.use('/password-cards', (new PasswordCardRouter(new PasswordCardController)).router);
     }
-
 }
