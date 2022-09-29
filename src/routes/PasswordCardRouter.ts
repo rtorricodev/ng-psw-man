@@ -20,7 +20,7 @@ export class PasswordCardRouter {
             }
         );
 
-        this.router.delete('/:id', (request: express.Request, response: express.Response) => 
+        this.router.delete('/:id', (request: express.Request, response: express.Response): void => 
             controller.delete(request, response)
         );
     }    
