@@ -5,13 +5,13 @@ import { PasswordManagerListComponent } from './password-manager-list/password-m
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: PasswordManagerListComponent,
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PasswordManagerRoutingModule { }
+export class PasswordManagerRoutingModule {}

@@ -25,8 +25,6 @@ import { PasswordManagerRoutingModule } from './password-manager-router.module';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [
-    PasswordManagerHttpService,
-  ]
+  providers: [PasswordManagerHttpService],
 })
-export class PasswordManagerModule { }
+export class PasswordManagerModule {}

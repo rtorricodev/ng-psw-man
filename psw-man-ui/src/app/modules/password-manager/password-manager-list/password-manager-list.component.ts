@@ -2,7 +2,7 @@ import { Observable, filter, of, switchMap, take, tap } from 'rxjs';
 
 import { Component } from '@angular/core';
 import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { PasswordCard } from '../interfaces/PasswordCard';
 import { PasswordManagerFormComponent } from './../password-manager-form/password-manager-form.component';
 import { PasswordManagerHttpService } from '../services/password-manager-http.service';
@@ -13,41 +13,77 @@ import { PasswordManagerHttpService } from '../services/password-manager-http.se
   styleUrls: ['./password-manager-list.component.css'],
 })
 export class PasswordManagerListComponent {
-
-  passwordCards$: Observable<PasswordCard[]> = this.httpService.getPasswordsCards();
+  passwordCards$: Observable<PasswordCard[]> =
+    this.httpService.getPasswordsCards();
 
   constructor(
     public dialog: MatDialog,
-    private httpService: PasswordManagerHttpService,
-  ) { }
+    private httpService: PasswordManagerHttpService
+  ) {}
 
   openCreateDialog(): void {
-    const dialogRef = this.dialog.open(PasswordManagerFormComponent,{ data: { title: "Create New Password" }});
+    const dialogRef = this.dialog.open(PasswordManagerFormComponent, {
+      data: { title: 'Create New Password' },
+    });
 
-    dialogRef.afterClosed()
-    .pipe(
-      filter((passwordCard: PasswordCard) => !! passwordCard),
-      switchMap((passwordCard: PasswordCard ) => this.httpService.savePasswordCard(passwordCard)),
-      filter((res : { payload?: PasswordCard, message: string }) => res.payload !== undefined),
-      tap(() =>  this.passwordCards$ = this.httpService.getPasswordsCards()),
-    ).subscribe()
+    dialogRef
+      .afterClosed()
+      .pipe(
+        filter((passwordCard: PasswordCard) => !!passwordCard),
+        switchMap((passwordCard: PasswordCard) =>
+          this.httpService.savePasswordCard(passwordCard)
+        ),
+        filter(
+          (res: { payload?: PasswordCard; message: string }) =>
+            res.payload !== undefined
+        ),
+        tap(() => (this.passwordCards$ = this.httpService.getPasswordsCards())),
+        take(1)
+      )
+      .subscribe();
   }
 
   openDeleteDialog(id: string): void {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, { data: { message: "Are you sure do delete it ?" }})
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: { message: 'Are you sure do delete it ?', passwordCard: {} },
+    });
 
-    dialogRef.afterClosed()
-    .pipe(
-      filter((confirmation: boolean | undefined) => !!confirmation),
-      switchMap(() => this.httpService.deletePasswordCard(id)),
-      filter((response: { message: string, error: boolean} ) => !response.error),
-      tap(() => this.passwordCards$ = this.httpService.getPasswordsCards()),
-    ).subscribe()
+    dialogRef
+      .afterClosed()
+      .pipe(
+        filter((confirmation: boolean | undefined) => !!confirmation),
+        switchMap(() => this.httpService.deletePasswordCard(id)),
+        filter(
+          (response: { message: string; error: boolean }) => !response.error
+        ),
+        tap(() => (this.passwordCards$ = this.httpService.getPasswordsCards())),
+        take(1)
+      )
+      .subscribe();
   }
 
-  openEditDialog(): void {
-    console.log('edit');
-  }
-  
+  openEditDialog(passwordCard: PasswordCard): void {
+    const dialogRef = this.dialog.open(PasswordManagerFormComponent, {
+      data: { title: 'Edit Password', passwordCard },
+    });
 
+    dialogRef
+      .afterClosed()
+      .pipe(
+        filter((updatedPasswordCard: PasswordCard) => !!updatedPasswordCard),
+        switchMap((updatedPasswordCard: PasswordCard) =>
+          this.httpService.updatePasswordCard(passwordCard.id, {
+            ...updatedPasswordCard,
+            id: passwordCard.id,
+          })
+        ),
+        filter(
+          (res: { payload?: PasswordCard; message: string }) =>
+            res.payload !== undefined
+        ),
+        tap(() => (this.passwordCards$ = this.httpService.getPasswordsCards())),
+        take(1)
+      )
+      .subscribe();
+  }
 }
