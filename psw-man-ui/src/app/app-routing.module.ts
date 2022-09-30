@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: "password-manager",
-    loadChildren: () => import("./modules/password-manager/password-manager-list/password-manager.module").then(m => m.PasswordManagerModule) 
+    loadChildren: () => import("./modules/password-manager/password-manager.module").then(m => m.PasswordManagerModule) 
   }
 ];
 

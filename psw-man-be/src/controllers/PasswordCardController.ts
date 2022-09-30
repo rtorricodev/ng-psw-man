@@ -11,15 +11,18 @@ export interface PasswordCard {
 
 export default class PasswordCardController {
     private passwordCardList: PasswordCard[] = [];
+    private idGenerated: string = "0";
 
     add(requrest: express.Request, response: express.Response): void {
         const passwordCard = requrest.body;
+        passwordCard.id = parseInt(this.idGenerated) + 1;
+        this.idGenerated = (parseInt(this.idGenerated) +1).toString();
         this.passwordCardList.push(passwordCard);
         response.send({ payload: passwordCard, message: 'Password Card was successfully added'})
     }
 
     getAll(request: express.Request, response: express.Response): void {
-        response.send({ payload: this.passwordCardList});
+        response.send(this.passwordCardList);
     }
 
     update(request: express.Request, response: express.Response): void {
@@ -30,9 +33,9 @@ export default class PasswordCardController {
 
         if (index > -1) {
             this.passwordCardList[index] = passwordCard;
-            response.send({payload: passwordCard, message: `Pasword Card with ${id} was updated`})
+            response.send({payload: passwordCard, message: `Password Card with id ${id} was updated`})
         } else {
-            response.send({message: `Id don't match ant Password Card`});
+            response.send({message: `Id don't match any Password Card`});
         }
     }
 

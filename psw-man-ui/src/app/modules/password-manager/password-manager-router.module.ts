@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 
 import { NgModule } from '@angular/core';
-import { PasswordManagerListComponent } from './password-manager-list.component';
+import { PasswordManagerListComponent } from './password-manager-list/password-manager-list.component';
 
 const routes: Routes = [
   {
