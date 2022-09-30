@@ -1,6 +1,5 @@
 - Demo: [video]: https://www.loom.com/share/d8d0be7fc3744a6fa97c7a8b30e952a2
 
-
 # UI:
 
 - Angular version: 14
