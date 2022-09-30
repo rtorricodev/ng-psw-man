@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { PasswordManagerHttpService } from './modules/password-manager/services/password-manager-http.service';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     BrowserModule,
     CoreModule,
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
