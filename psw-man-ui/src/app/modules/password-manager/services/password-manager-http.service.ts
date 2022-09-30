@@ -19,4 +19,8 @@ export class PasswordManagerHttpService {
     return this.httpClient.post<{ payload: PasswordCard, message: string}>(`${environment.apiUrl}/password-cards`, passwordCard);
   }
 
+  deletePasswordCard(id: string): Observable<{ message: string, error: boolean}> {
+    return this.httpClient.delete<{ message: string, error: boolean}>(`${environment.apiUrl}/password-cards/${id}`)
+  }
+
 }

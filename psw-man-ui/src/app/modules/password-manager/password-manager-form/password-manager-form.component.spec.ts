@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateEditPasswordCardComponent } from './create-edit-password-card.component';
+import { CreateEditPasswordCardComponent } from './psw-man-form.component';
 
 describe('CreateEditPasswordCardComponent', () => {
   let component: CreateEditPasswordCardComponent;
