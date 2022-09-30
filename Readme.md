@@ -13,7 +13,7 @@
 - The application was splited in modules in order to use lazy loading
 
 
-# Be:
+# BE:
 
 - Node: 16.14.0
 - TypeScript: 4.8.4
@@ -38,7 +38,7 @@
     - Click Confirm button
     - Button right to the password field should hide/unhide password field
     - Button right to the hide button should copy the password
-        - Yo should be able to paste the password wherever you need it
+        - You should be able to paste the password wherever you need it
     - Password card should be displayed at the end of the list
 
 ## Delete Password Card:
