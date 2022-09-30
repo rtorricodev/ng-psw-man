@@ -13,11 +13,10 @@ import { PasswordManagerHttpService } from '../services/password-manager-http.se
   styleUrls: ['./password-manager-list.component.css'],
 })
 export class PasswordManagerListComponent {
-  
   passwordCards$: Observable<PasswordCard[]> =
     this.httpService.getPasswordsCards();
 
-  searchNameCriteria: string = ""; 
+  searchNameCriteria: string = '';
 
   constructor(
     public dialog: MatDialog,
@@ -48,7 +47,7 @@ export class PasswordManagerListComponent {
 
   openDeleteDialog(id: string): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      data: { message: 'Are you sure do delete it ?', passwordCard: {} },
+      data: { message: 'Are you sure to delete it ?', passwordCard: {} },
     });
 
     dialogRef
@@ -91,22 +90,27 @@ export class PasswordManagerListComponent {
   }
 
   filterByName(): void {
-    if(this.searchNameCriteria === "") {
+    if (this.searchNameCriteria === '') {
       this.passwordCards$ = this.httpService.getPasswordsCards();
     }
-    this.passwordCards$.pipe(
-      filter((passwordCards: PasswordCard[]) => !!passwordCards),
-      tap((passwordCards: PasswordCard[]) => {
-        const filterdList: PasswordCard[] = []
-        passwordCards.forEach((passwordCard: PasswordCard) => {
-          if(passwordCard.name.toLowerCase().includes(this.searchNameCriteria.toLowerCase())) {
-            filterdList.push(passwordCard)
-          }
-        })
-        this.passwordCards$ = of(filterdList);
-      }),
-      take(1),
-    ).subscribe();
+    this.passwordCards$
+      .pipe(
+        filter((passwordCards: PasswordCard[]) => !!passwordCards),
+        tap((passwordCards: PasswordCard[]) => {
+          const filterdList: PasswordCard[] = [];
+          passwordCards.forEach((passwordCard: PasswordCard) => {
+            if (
+              passwordCard.name
+                .toLowerCase()
+                .includes(this.searchNameCriteria.toLowerCase())
+            ) {
+              filterdList.push(passwordCard);
+            }
+          });
+          this.passwordCards$ = of(filterdList);
+        }),
+        take(1)
+      )
+      .subscribe();
   }
-    
 }
