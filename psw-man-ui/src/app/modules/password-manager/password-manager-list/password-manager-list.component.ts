@@ -13,8 +13,11 @@ import { PasswordManagerHttpService } from '../services/password-manager-http.se
   styleUrls: ['./password-manager-list.component.css'],
 })
 export class PasswordManagerListComponent {
+  
   passwordCards$: Observable<PasswordCard[]> =
     this.httpService.getPasswordsCards();
+
+  searchNameCriteria: string = ""; 
 
   constructor(
     public dialog: MatDialog,
@@ -86,4 +89,24 @@ export class PasswordManagerListComponent {
       )
       .subscribe();
   }
+
+  filterByName(): void {
+    if(this.searchNameCriteria === "") {
+      this.passwordCards$ = this.httpService.getPasswordsCards();
+    }
+    this.passwordCards$.pipe(
+      filter((passwordCards: PasswordCard[]) => !!passwordCards),
+      tap((passwordCards: PasswordCard[]) => {
+        const filterdList: PasswordCard[] = []
+        passwordCards.forEach((passwordCard: PasswordCard) => {
+          if(passwordCard.name.toLowerCase().includes(this.searchNameCriteria.toLowerCase())) {
+            filterdList.push(passwordCard)
+          }
+        })
+        this.passwordCards$ = of(filterdList);
+      }),
+      take(1),
+    ).subscribe();
+  }
+    
 }
