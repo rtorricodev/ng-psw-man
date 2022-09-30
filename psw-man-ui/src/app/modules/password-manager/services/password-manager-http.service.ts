@@ -8,6 +8,7 @@ import { environment } from './../../../../environments/environment';
   providedIn: 'root',
 })
 export class PasswordManagerHttpService {
+  
   private passwordCardApiUrl: string = `${environment.apiUrl}/password-cards`;
 
   constructor(private httpClient: HttpClient) {}

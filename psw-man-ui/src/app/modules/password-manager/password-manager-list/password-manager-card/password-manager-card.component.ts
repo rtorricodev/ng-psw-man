@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-password-manager-card',
   templateUrl: './password-manager-card.component.html',
   styleUrls: ['./password-manager-card.component.css'],
 })
-export class PasswordManagerCardComponent implements OnInit {
+export class PasswordManagerCardComponent {
   @Input() name: string = '';
   @Input() url: string = '';
   @Output() deleteClickedEvent: EventEmitter<void> = new EventEmitter();
@@ -20,6 +20,4 @@ export class PasswordManagerCardComponent implements OnInit {
   emitEditEvent(): void {
     this.editClieckedEvent.emit();
   }
-
-  ngOnInit(): void {}
 }
