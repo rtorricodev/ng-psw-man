@@ -1,7 +1,7 @@
 import MainController from '../controllers/MainController';
-import { MainRouter } from './../routes/MainRouter';
+import { MainRouter } from '../routes/MainRouter';
 import PasswordCardController from '../controllers/PasswordCardController';
-import { PasswordCardRouter } from './../routes/PasswordCardRouter';
+import { PasswordCardRouter } from '../routes/PasswordCardRouter';
 import bodyParser from "body-parser";
 import express from "express";
 
