@@ -8,7 +8,6 @@ import { NgIf, NgClass } from '@angular/common';
 @Component({
     selector: 'app-psw-man-form',
     templateUrl: './password-manager-form.component.html',
-    styleUrls: ['./password-manager-form.component.css'],
     standalone: true,
     imports: [MatLegacyDialogModule, FormsModule, ReactiveFormsModule, NgIf, NgClass]
 })
