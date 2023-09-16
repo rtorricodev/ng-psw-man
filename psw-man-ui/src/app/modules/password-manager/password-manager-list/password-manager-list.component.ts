@@ -2,7 +2,7 @@ import { Observable, filter, of, switchMap, take, tap } from 'rxjs';
 
 import { Component } from '@angular/core';
 import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { PasswordCard } from '../interfaces/PasswordCard';
 import { PasswordManagerFormComponent } from './../password-manager-form/password-manager-form.component';
 import { PasswordManagerHttpService } from '../services/password-manager-http.service';

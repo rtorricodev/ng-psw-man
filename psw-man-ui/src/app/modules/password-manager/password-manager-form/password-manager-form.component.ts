@@ -1,7 +1,7 @@
 import { PasswordCard } from '../interfaces/PasswordCard';
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
