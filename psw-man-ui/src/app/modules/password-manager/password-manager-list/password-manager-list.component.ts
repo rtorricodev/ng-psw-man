@@ -6,11 +6,16 @@ import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { PasswordCard } from '../interfaces/PasswordCard';
 import { PasswordManagerFormComponent } from './../password-manager-form/password-manager-form.component';
 import { PasswordManagerHttpService } from '../services/password-manager-http.service';
+import { PasswordManagerCardComponent } from './password-manager-card/password-manager-card.component';
+import { NgFor, AsyncPipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-password-manager-list',
-  templateUrl: './password-manager-list.component.html',
-  styleUrls: ['./password-manager-list.component.css'],
+    selector: 'app-password-manager-list',
+    templateUrl: './password-manager-list.component.html',
+    styleUrls: ['./password-manager-list.component.css'],
+    standalone: true,
+    imports: [FormsModule, NgFor, PasswordManagerCardComponent, AsyncPipe]
 })
 export class PasswordManagerListComponent {
   passwordCards$: Observable<PasswordCard[]> =

@@ -1,13 +1,16 @@
 import { PasswordCard } from '../interfaces/PasswordCard';
 import { Component, Inject } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogModule } from '@angular/material/legacy-dialog';
 import { ClipboardService } from 'ngx-clipboard';
+import { NgIf, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-psw-man-form',
-  templateUrl: './password-manager-form.component.html',
-  styleUrls: ['./password-manager-form.component.css'],
+    selector: 'app-psw-man-form',
+    templateUrl: './password-manager-form.component.html',
+    styleUrls: ['./password-manager-form.component.css'],
+    standalone: true,
+    imports: [MatLegacyDialogModule, FormsModule, ReactiveFormsModule, NgIf, NgClass]
 })
 export class PasswordManagerFormComponent {
   form: FormGroup = new FormGroup({

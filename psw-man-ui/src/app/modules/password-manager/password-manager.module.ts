@@ -12,19 +12,17 @@ import { PasswordManagerListComponent } from './password-manager-list/password-m
 import { PasswordManagerRoutingModule } from './password-manager-router.module';
 
 @NgModule({
-  declarations: [
-    PasswordManagerListComponent,
-    PasswordManagerCardComponent,
-    PasswordManagerFormComponent,
-  ],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    PasswordManagerRoutingModule,
-    MatDialogModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
-  providers: [PasswordManagerHttpService],
+    imports: [
+        CommonModule,
+        HttpClientModule,
+        PasswordManagerRoutingModule,
+        MatDialogModule,
+        FormsModule,
+        ReactiveFormsModule,
+        PasswordManagerListComponent,
+        PasswordManagerCardComponent,
+        PasswordManagerFormComponent
+    ],
+    providers: [PasswordManagerHttpService]
 })
 export class PasswordManagerModule {}

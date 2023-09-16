@@ -8,8 +8,8 @@ describe('PasswordManagerListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PasswordManagerListComponent ]
-    })
+    imports: [PasswordManagerListComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(PasswordManagerListComponent);

@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-password-manager-card',
-  templateUrl: './password-manager-card.component.html',
-  styleUrls: ['./password-manager-card.component.css'],
+    selector: 'app-password-manager-card',
+    templateUrl: './password-manager-card.component.html',
+    styleUrls: ['./password-manager-card.component.css'],
+    standalone: true
 })
 export class PasswordManagerCardComponent {
   @Input() name: string = '';

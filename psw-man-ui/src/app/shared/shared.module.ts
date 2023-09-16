@@ -4,14 +4,14 @@ import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/lega
 import { NgModule } from '@angular/core';
 
 @NgModule({
-  declarations: [ConfirmationDialogComponent],
-  imports: [
-    CommonModule,
-    MatDialogModule,
-  ],
-  exports: [
-    ConfirmationDialogComponent,
-  ]
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        ConfirmationDialogComponent
+    ],
+    exports: [
+        ConfirmationDialogComponent,
+    ]
 })
 
 export class SharedModule { }
